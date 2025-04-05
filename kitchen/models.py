@@ -15,6 +15,7 @@ class Cook(AbstractUser):
         null=False,
         blank=False,
     )
+
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
