@@ -4,10 +4,15 @@ from django.contrib.auth.admin import UserAdmin
 from kitchen.models import(
 DishType,
 Dish,
-Cook
+Cook,
 )
 
 
+class DishAdmin(admin.ModelAdmin):
+    list_display = ["name", "dish_type", "price",]
+    list_filter = ["dish_type__name", ]
+
+
 admin.site.register(DishType)
-admin.site.register(Dish)
+admin.site.register(Dish, DishAdmin)
 admin.site.register(Cook, UserAdmin)
