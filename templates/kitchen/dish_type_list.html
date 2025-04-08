@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+	<h1>Dish type list</h1>
+
+  {% if dish_type_list %}
+  	<ul>
+    {% for dish_type in dish_type_list %}
+    	<li>{{ dish_type.name }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are ni dish types in Kitchen</p>
+  {% endif %}
+{% endblock %}
