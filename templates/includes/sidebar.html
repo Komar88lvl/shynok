@@ -1,1 +1,14 @@
-sidebar
+<ul class="sidebar-nav">
+  <li>
+    <a href="{% url 'kitchen:index' %}">Home</a>
+  </li>
+  <li>
+    <a href="{% url 'kitchen:dish-list' %}">All dishes</a>
+  </li>
+  <li>
+    <a href="{% url 'kitchen:dish-type-list' %}">All dish types</a>
+  </li>
+  <li>
+    <a href="{% url 'kitchen:cook-list' %}">All cooks</a>
+  </li>
+</ul>
