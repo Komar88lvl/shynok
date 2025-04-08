@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+	<h1>Cook list</h1>
+  {% if cook_list %}
+  	<ul>
+      {% for cook in cook_list %}
+      	<li>{{ cook.first_name }} {{ cook.last_name }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no cooks in Kitchen</p>
+  {% endif %}
+{% endblock %}
