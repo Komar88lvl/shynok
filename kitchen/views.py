@@ -25,3 +25,7 @@ class DishTypeListView(generic.ListView):
 
 class DishListView(generic.ListView):
     model = Dish
+
+
+class CookListView(generic.ListView):
+    model = Cook

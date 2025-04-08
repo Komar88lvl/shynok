@@ -7,7 +7,8 @@
       {% for dish in dish_list %}
       	<li>{{ dish.name }} ({{ dish.dish_type }} {{ dish.price }})</li>
       {% endfor %}
-      
     </ul>
+    {% else %}
+    <p>There are no dishes in Kitchen</p>
   {% endif %} 
 {% endblock %}
