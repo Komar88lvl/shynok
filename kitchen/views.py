@@ -29,10 +29,10 @@ class DishTypeDetailView(generic.DetailView):
     context_object_name = "dish_type_detail"
 
 
+class CookListView(generic.ListView):
+    model = Cook
+
+
 class DishListView(generic.ListView):
     model = Dish
     queryset = Dish.objects.select_related("dish_type")
-
-
-class CookListView(generic.ListView):
-    model = Cook
