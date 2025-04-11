@@ -41,3 +41,7 @@ class DishListView(generic.ListView):
     model = Dish
     queryset = Dish.objects.select_related("dish_type")
     paginate_by = 5
+
+
+class DishDetailView(generic.DetailView):
+    model = Dish
