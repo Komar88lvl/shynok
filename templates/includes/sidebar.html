@@ -3,12 +3,10 @@
     <li>
       <a href="{% url 'kitchen:cook-detail' user.id %}">User:  {{ user.username }}</a>
     </li>
-    <li>
       <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button type="submit" class="btn btn-danger">Logout</button>
       </form>
-    </li>
   {% else %}
     <li>
       <a href="{% url 'login' %}">Login</a>
