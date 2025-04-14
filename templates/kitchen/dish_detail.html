@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>{{ dish.name }}</h1>
+	<h1>{{ dish.name }} <a style="float: right" href="{% url 'kitchen:dish-update' pk=dish.id %}">Edit</a></h1>
   <div class="ml-3">
     <h3>This is {{ dish.dish_type }}</h3>
     <p>Description: {{ dish.description }}</p>

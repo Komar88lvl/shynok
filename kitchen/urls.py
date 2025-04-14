@@ -15,7 +15,6 @@ from kitchen.views import (
        DishCreateView,
        DishUpdateView,
        DishDeleteView,
-
 )
 
 urlpatterns = [
