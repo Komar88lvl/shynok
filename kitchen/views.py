@@ -90,7 +90,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             return self.queryset.filter(
                 name__icontains=form.cleaned_data["name"]
-            )
+            ).order_by("name")
         return self.queryset
 
 
