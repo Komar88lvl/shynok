@@ -1,6 +1,6 @@
-<ul class="sidebar-nav">
+<ul class="sidebar-nav list-group">
   {% if user.is_authenticated %}
-    <li>
+    <li class="list-group-item">
       <a href="{% url 'kitchen:cook-detail' user.id %}">User:  {{ user.username }}</a>
     </li>
       <form action="{% url 'logout' %}" method="post">
@@ -8,21 +8,21 @@
         <button type="submit" class="btn btn-danger">Logout</button>
       </form>
   {% else %}
-    <li>
+    <li class="list-group-item">
       <a href="{% url 'login' %}">Login</a>
     </li>
   {% endif %}
   <br>
-  <li>
+  <li class="list-group-item">
     <a href="{% url 'kitchen:index' %}">Home</a>
   </li>
-  <li>
+  <li class="list-group-item">
     <a href="{% url 'kitchen:dish-list' %}">All dishes</a>
   </li>
-  <li>
+  <li class="list-group-item">
     <a href="{% url 'kitchen:dish-type-list' %}">All dish types</a>
   </li>
-  <li>
+  <li class="list-group-item">
     <a href="{% url 'kitchen:cook-list' %}">All cooks</a>
   </li>
 </ul>
