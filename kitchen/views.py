@@ -72,7 +72,6 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
-    queryset = Dish.objects.select_related("dish_type")
     paginate_by = 5
 
     def get_context_data(
@@ -86,12 +85,13 @@ class DishListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
+        queryset = Dish.objects.select_related("dish_type")
         form = DishSearchForm(self.request.GET)
         if form.is_valid():
-            return self.queryset.filter(
+            return queryset.filter(
                 name__icontains=form.cleaned_data["name"]
             ).order_by("name")
-        return self.queryset
+        return queryset
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
