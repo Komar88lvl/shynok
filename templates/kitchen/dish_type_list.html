@@ -6,16 +6,13 @@
   {% if dish_type_list %}
     <table class="table">
       <tr>
-        <th>ID</th>
         <th>Type</th>
         <th>Update</th>
         <th>Delete</th>
+        <th>ID</th>
       </tr>
       {% for dish_type in dish_type_list %}
       	<tr>
-          <td>
-            {{ dish_type.id }}
-          </td>
           <td>
             <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">{{ dish_type.name }}</a>
           </td>
@@ -24,6 +21,9 @@
           </td>
           <td>
             <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">DELETE</a>
+          </td>
+          <td>
+            {{ dish_type.id }}
           </td>
         </tr>
       {% endfor %}
