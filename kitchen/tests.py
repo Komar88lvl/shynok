@@ -20,3 +20,22 @@ class ModelTests(TestCase):
             str(cook),
             f"{cook.username} ({cook.first_name} {cook.last_name})"
         )
+
+    def test_dish_str(self):
+        cook = get_user_model().objects.create(
+            username="test",
+            password="test123",
+            first_name="test_first",
+            last_name="test_last",
+        )
+        dish_type = DishType.objects.create(name="test")
+        dish = Dish.objects.create(
+            name="test",
+            price=2.5,
+            dish_type=dish_type,
+        )
+        dish.cooks.add(cook)
+        self.assertEqual(
+            str(dish),
+            f"{dish.name} {dish.price}"
+        )
