@@ -39,3 +39,16 @@ class ModelTests(TestCase):
             str(dish),
             f"{dish.name} {dish.price}"
         )
+
+    def test_create_cook_with_years_of_experience(self):
+        username = "test"
+        password = "test123"
+        years_of_experience = 10
+        cook = get_user_model().objects.create_user(
+            username=username,
+            password=password,
+            years_of_experience=years_of_experience,
+        )
+        self.assertEqual(cook.username, username)
+        self.assertEqual(cook.years_of_experience, years_of_experience)
+        self.assertTrue(cook.check_password(password))
