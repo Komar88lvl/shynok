@@ -14,7 +14,7 @@ class AdminSiteTests(TestCase):
         self.cook = get_user_model().objects.create_user(
             username="cook",
             password="testcook",
-            years_of_experience = 3,
+            years_of_experience=3,
         )
 
     def test_cook_years_of_experience_listed(self):
