@@ -72,7 +72,7 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
-    paginate_by = 5
+    paginate_by = 10
 
     def get_context_data(
         self, *, object_list=..., **kwargs
