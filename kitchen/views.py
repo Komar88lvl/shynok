@@ -59,6 +59,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
+    paginate_by = 10
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
