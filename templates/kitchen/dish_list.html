@@ -3,9 +3,9 @@
 
 {% block content %}
 	<h1>Dish list <a class="btn btn-primary" style="float: right;" href="{% url 'kitchen:dish-create' %}">+</a></h1>
-  <form method="get" action="" class="form-check-inline">
-    {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit" value="👀">
+  <form method="get" action="" class="form-inline d-flex">
+      <div class="me-2">{{ search_form|crispy }}</div>
+      <input class="btn btn-secondary" type="submit" value="👀">
   </form>
   {% if dish_list %}
     <table class="table">
