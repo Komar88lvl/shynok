@@ -29,6 +29,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     template_name = "kitchen/dish_type_list.html"
     context_object_name = "dish_type_list"
+    paginate_by = 10
 
 
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
