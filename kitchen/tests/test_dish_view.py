@@ -12,6 +12,20 @@ class PublicDishTest(TestCase):
         res = self.client.get(DISH_URL)
         self.assertNotEqual(res.status_code, 200)
 
+    def test_login_detail_required(self):
+        dish_type = DishType.objects.create(name="test")
+        dish = Dish.objects.create(
+            name="testdish",
+            dish_type=dish_type,
+            price=14.20,
+        )
+        url = reverse(
+            "kitchen:dish-detail",
+            args=[dish.id]
+        )
+        res = self.client.get(url)
+        self.assertNotEqual(res.status_code, 200)
+
 
 class PrivateDishTest(TestCase):
     def setUp(self):
