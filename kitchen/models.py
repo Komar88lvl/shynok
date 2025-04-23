@@ -42,8 +42,9 @@ class Dish(models.Model):
     )
     dish_type = models.ForeignKey(
         DishType,
-        on_delete=models.SET_DEFAULT,
-        default="some_type",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         related_name="type_dishes",
     )
     cooks = models.ManyToManyField(
