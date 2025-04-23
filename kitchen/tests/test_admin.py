@@ -26,3 +26,11 @@ class AdminSiteTests(TestCase):
         url = reverse("admin:kitchen_cook_change", args=[self.cook.id])
         res = self.client.get(url)
         self.assertContains(res, self.cook.years_of_experience)
+
+    def test_cook_add_additional_info_listed(self):
+        url = reverse("admin:kitchen_cook_add")
+        res = self.client.get(url)
+        self.assertContains(res, self.cook.last_name)
+        self.assertContains(res, self.cook.first_name)
+        self.assertContains(res, self.cook.email)
+        self.assertContains(res, self.cook.years_of_experience)
