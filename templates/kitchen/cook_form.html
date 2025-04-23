@@ -3,9 +3,5 @@
 
 {% block content %}
 	<h1>Create cook</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input class="btn btn-primary" type="submit" value="Submit">
-  </form>
+  {% include 'includes/confirm_form.html' with form=form %}
 {% endblock %}
