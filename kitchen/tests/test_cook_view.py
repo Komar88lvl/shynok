@@ -11,6 +11,17 @@ class PublicCookTest(TestCase):
         res = self.client.get(COOK_URL)
         self.assertNotEqual(res.status_code, 200)
 
+    def test_login_cook_detail_required(self):
+        user = get_user_model().objects.create_user(
+            username="test",
+            password="password123",
+        )
+        res = self.client.get(
+            "kitchen:cook-detail",
+            args=[user.id],
+        )
+        self.assertNotEqual(res.status_code, 200)
+
 
 class PrivateCookTests(TestCase):
     def setUp(self):
