@@ -7,4 +7,5 @@
     {% csrf_token %}
     <input type="submit" value="Yes, delete" class="btn btn-danger">
   </form>
+  <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary">No thanks</a>
 {% endblock %}
