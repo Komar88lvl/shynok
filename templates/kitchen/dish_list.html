@@ -1,38 +1,75 @@
-{% extends "base.html" %}
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-	<h1>Dish list <a class="btn btn-primary" style="float: right;" href="{% url 'kitchen:dish-create' %}">+</a></h1>
-    {% include 'includes/search_form.html' with form=form %}
-  {% if dish_list %}
-    <table class="table">
-      <tr>
-        <th>Dish</th>
-        <th>Price</th>
-        <th>Update</th>
-        <th>Delete</th>
-        <th>ID</th>
-      </tr>
-      {% for dish in dish_list %}
-      	<tr>
-          <td>
-            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-          </td>
-          <td>
-            {{ dish.price }}
-          </td>
-          <td>
-            <a href="{% url 'kitchen:dish-update' pk=dish.id %}">UPDATE</a>
-          </td>
-          <td>
-            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}">DELETE</a>
-          </td>
-          <td>
-            {{ dish.id }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>There are no dish in Kitchen</p>
-  {% endif %}
-{% endblock %}
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <div style="float: right;">
+                    {% include 'includes/search_form.html' with form=form %}
+                  </div>
+                  <h4 class="card-title ">Dish list</h4>
+                  <p class="card-category">what you want to try?</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                  {% if dish_list %}
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Dish
+                          <a class="btn btn-sm" href="{% url 'kitchen:dish-create' %}">+</a>
+                        </th>
+                        <th>
+                          Price
+                        </th>
+                        <th>
+                          Update
+                        </th>
+                        <th>
+                          Delete
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                      </thead>
+                      <tbody>
+                      {% for dish in dish_list %}
+                        <tr>
+                          <td>
+                            <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+                          </td>
+                          <td>
+                            {{ dish.price }}
+                          </td>
+                          <td>
+                            <a href="{% url 'kitchen:dish-update' pk=dish.id %}">Update</a>
+                          </td>
+                          <td>
+                            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}">DELETE</a>
+                          </td>
+                          <td>
+                            {{ dish.id }}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                  {% else %}
+                    <p>There are no dishes in Kitchen</p>
+                  {% endif %}
+              </div>
+            </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,34 +1,68 @@
-{% extends "base.html" %}
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-	<h1>Dish type list <a class="btn btn-primary" style="float: right" href="{% url 'kitchen:dish-type-create' %}">+</a></h1>
-    {% include 'includes/search_form.html' with form=form %}
-  {% if dish_type_list %}
-    <table class="table">
-      <tr>
-        <th>Type</th>
-        <th>Update</th>
-        <th>Delete</th>
-        <th>ID</th>
-      </tr>
-      {% for dish_type in dish_type_list %}
-      	<tr>
-          <td>
-            <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">{{ dish_type.name }}</a>
-          </td>
-          <td>
-            <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">UPDATE</a>
-          </td>
-          <td>
-            <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">DELETE</a>
-          </td>
-          <td>
-            {{ dish_type.id }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>There are no dish types in Kitchen</p>
-  {% endif %}
-{% endblock %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <div style="float: right;">
+                    {% include 'includes/search_form.html' with form=form %}
+                  </div>
+                  <h4 class="card-title ">Dish types list</h4>
+                  <p class="card-category">with examples inside</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                  {% if dish_type_list %}
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Type
+                          <a class="btn btn-sm" href="{% url 'kitchen:dish-type-create' %}">+</a>
+                        </th>
+                        <th>
+                          Update
+                        </th>
+                        <th>
+                          Delete
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                      </thead>
+                      <tbody>
+                      {% for dish_type in dish_type_list %}
+                        <tr>
+                          <td>
+                            <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">{{ dish_type.name }}</a>
+                          </td>
+                          <td>
+                            <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">Update</a>
+                          </td>
+                          <td>
+                            <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">DELETE</a>
+                          </td>
+                          <td>
+                            {{ dish_type.id }}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                  {% else %}
+                    <p>There are no dish types in Kitchen</p>
+                  {% endif %}
+              </div>
+            </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
