@@ -1,15 +1,75 @@
-{% extends "base.html" %}
-{% block title %}
-	<title>Home</title>
-{% endblock %}
+{% extends "layouts/base.html" %}
+
+{% block title %} Shynok {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
 {% block content %}
-    <h1>Shynok home</h1>
-  <p>Welcome to our kitchen</p>
-  <h3>We have:</h3>
-  <ul>
-    <li>Num cooks: {{ num_cooks }}</li>
-    <li>Num types of dishes: {{ num_type_dishes }}</li>
-    <li>Num dishes: {{ num_dishes }}</li>
-  </ul>
-  <p>You visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
-{% endblock %}
+  <h1>Welcome to our kitchen</h1>
+  <br>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-symbols-outlined">chef_hat</i>
+            </div>
+            <p class="card-category">Cooks</p>
+            <h3 class="card-title">{{ num_cooks }}
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons"></i>Best chefs
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-symbols-outlined">menu_book</i>
+            </div>
+            <p class="card-category">Dish Types</p>
+            <h3 class="card-title">{{ num_type_dishes }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons"></i> Variety of dishes
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-symbols-outlined">restaurant</i>
+            </div>
+            <p class="card-category">Dishes</p>
+            <h3 class="card-title">{{ num_dishes }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons"></i> Must Try!
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}
