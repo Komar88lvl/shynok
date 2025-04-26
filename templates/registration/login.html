@@ -1,15 +1,54 @@
-{% extends "base.html" %}
+{% extends "layouts/base.html" %}
 {% load crispy_forms_filters %}
 
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
 {% block content %}
-	<h1>Login</h1>
-  {% if form.errors %}
-  	<p style="color: red">Invalid credentials</p>
-  {% endif %}
-  <form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input class="btn btn-primary" type="submit" value="Submit">
-  <input type="hidden" name="next" value="{{ next }}">
-  </form>
-{% endblock %}
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">
+            Login
+          </h4>
+        </div>
+        <div class="card-body">
+
+          <h6 class="card-category">
+              {% if msg %}
+                <span class="text-danger">{{ msg | safe }}</span>
+              {% else %}
+                  Add your credentials
+              {% endif %}
+          </h6>
+
+          <br />
+
+          <form role="form" method="post" action="">
+
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <br />
+
+            <button type="submit" name="login" class="btn btn-primary pull-left">Login</button>
+
+            &nbsp; &nbsp;
+
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
