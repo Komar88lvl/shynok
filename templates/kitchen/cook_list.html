@@ -1,0 +1,69 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <div style="float: right;">
+                    {% include 'includes/search_form.html' with form=form %}
+                </div>
+                  <h4 class="card-title ">Cook list</h4>
+                  <p class="card-category">our staff</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                  {% if cook_list %}
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Username
+                          <a class="btn btn-sm" href="{% url 'kitchen:cook-create' %}">+</a>
+                        </th>
+                        <th>
+                          Full name
+                        </th>
+                        <th>
+                          Experience
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                      </thead>
+                      <tbody>
+                      {% for cook in cook_list %}
+                        <tr>
+                          <td>
+                            <a href="{{ cook.get_absolute_url }}">{{ cook.username }}</a>
+                          </td>
+                          <td>
+                            {{ cook.first_name }} {{ cook.last_name }}
+                          </td>
+                          <td>
+                            {{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }}
+                          </td>
+                          <td>
+                            {{ cook.id }}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                  {% else %}
+                    <p>There are no cooks in Kitchen</p>
+                  {% endif %}
+              </div>
+            </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

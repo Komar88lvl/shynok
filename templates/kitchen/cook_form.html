@@ -1,0 +1,7 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+	<h1>Create cook</h1>
+  {% include 'includes/confirm_form.html' with form=form %}
+{% endblock %}

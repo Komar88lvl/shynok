@@ -1,0 +1,17 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	<h1>{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</h1>
+  <div class="ml-3">
+    <h3>{{ cook.email }}</h3>
+    <p>{{ cook.years_of_experience }} years of experience</p>
+    <h4>Can cook:</h4>
+    {% for meal in cook.dishes.all %}
+      <hr>
+      <p class="text-muted">{{ meal.name }}</p>
+      {% empty %}
+        <p>No Dishes</p>
+  {% endfor %}
+
+  </div>
+{% endblock %}

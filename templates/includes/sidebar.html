@@ -1,0 +1,52 @@
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <span class="simple-text logo-normal">
+          {% if user.is_authenticated %}
+            <li class="list-group-item">
+              <a href="{% url 'kitchen:cook-detail' user.id %}">User:  {{ user.username }}</a>
+            </li>
+          {% else %}
+            <li class="list-group-item">
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+          {% endif %}
+        </span>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.user.is_authenticated %}
+          <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="{% url 'kitchen:index' %}">
+              <i class="material-symbols-outlined">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'kitchen/cooks/' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'kitchen:cook-list' %}">
+              <i class="material-symbols-outlined">chef_hat</i>
+              <p>All cooks</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'kitchen/dish-types/' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'kitchen:dish-type-list' %}">
+              <i class="material-symbols-outlined">menu_book</i>
+              <p>All dish types</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'kitchen/dishes' in request.path %} active {% endif %}">
+            <a class="nav-link" href="{% url 'kitchen:dish-list' %}">
+              <i class="material-symbols-outlined">restaurant</i>
+              <p>All dishes</p>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item ">
+            <form action="{% url 'logout' %}" method="post" class="nav-link">
+              {% csrf_token %}
+              <p><button type="submit" class="btn btn-danger">logout</button></p>
+            </form>
+          </li>
+        {% endif %}
+        </ul>
+      </div>
+    </div>

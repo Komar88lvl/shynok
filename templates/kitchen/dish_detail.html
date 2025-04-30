@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	<h1>{{ dish.name }} <a class="btn btn-secondary" style="float: right" href="{% url 'kitchen:dish-update' pk=dish.id %}">Edit</a></h1>
+  <div class="ml-3">
+    <h3>This is {{ dish.dish_type }}</h3>
+    <p>Description: {{ dish.description }}</p>
+    <p>Price: {{ dish.price }}</p>
+    <h4>Who can cook:</h4>
+    {% for cook in dish.cooks.all %}
+      <hr>
+      <p class="text-muted">{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</p>
+    {% endfor %}
+
+  </div>
+{% endblock %}

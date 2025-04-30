@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>{{ dish_type_detail.name }} <a class="btn btn-secondary" style="float: right" href="{% url 'kitchen:dish-type-update' pk=dish_type_detail.id %}">Edit</a></h1>
+  <div class="ml-3">
+    <h3>Dishes:</h3>
+    {% for dish in dish_type_detail.type_dishes.all %}
+      <hr>
+      <p class="text-muted">{{ dish.name }}</p>
+    {% empty %}
+      <p>No dishes!</p>
+    {% endfor %}
+    
+  </div>
+{% endblock %}
