@@ -4,6 +4,16 @@ The project is designed to organize the work of a restaurant.
 Cooks are users among whom work can be flexibly distributed.
 All dishes are divided into types and have detailed descriptions.
 
+
+## Check it out!
+[Shynok project deployed to Render](https://shynok.onrender.com/)
+
+
+## user for test
+username: test_user
+password: 12345user
+
+
 ## Installing using GIT
 ```bash
    git clone https://github.com/Komar88lvl/shynok.git
